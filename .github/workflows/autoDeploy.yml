@@ -33,7 +33,7 @@ jobs:
       run: npm run build
     # Installing surge
     - name: Installing surge
-      run: npm install -g surge
+      run: npm install --global surge
     # Deploying
     - name: Deploying on surge
       run: surge ./build wretched-touch.surge.sh --token ${{secrets.ET_TOKEN}}

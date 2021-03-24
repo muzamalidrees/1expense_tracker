@@ -1,21 +1,24 @@
 import React, { useState, useContext } from 'react'
 import { AppContext } from '../contexts/GlobalState'
+import { transaction, addTr } from '../types/types'
 
 export const NewTransaction = () => {
-    const [detail, setDetail] = useState('')
-    const [amount, setAmount] = useState('')
+    const [detail, setDetail] = useState<string>('')
+    const [amount, setAmount] = useState<number>(NaN)
 
-    const { addTransaction } = useContext(AppContext)
+    const { addTransaction }: { addTransaction: addTr } = useContext(AppContext)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const newTransaction = {
+        const newTransaction: transaction = {
             id: new Date().getTime(),
             detail: detail,
             amount: +amount
         }
         addTransaction(newTransaction)
+        setAmount(NaN)
+        setDetail('')
     }
     return (
         <div>
@@ -30,7 +33,7 @@ export const NewTransaction = () => {
                         type='text'
                         placeholder='Enter detail'
                         value={detail}
-                        onChange={(e) => setDetail(e.target.value)}
+                        onChange={(e: React.ChangeEvent<{ value: unknown }>) => setDetail(e.target.value as string)}
                         required
                     />
                 </div>
@@ -41,7 +44,7 @@ export const NewTransaction = () => {
                         type='number'
                         placeholder='Enter amount'
                         value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
+                        onChange={(e: React.ChangeEvent<{ value: unknown }>) => setAmount(e.target.value as number)}
                         required
                     />
                 </div>

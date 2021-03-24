@@ -8,9 +8,10 @@ const initialGlobalState: globalState = {
     addTransaction: (transaction: transaction) => { }
 }
 
+
 export const AppContext: React.Context<globalState> = createContext(initialGlobalState)
 
-export const GlobalContextProvider = (children: App) => {
+export const GlobalContextProvider = (props: App) => {
     const [state, dispatch] = useReducer(AppReducer, initialGlobalState)
 
     const delTransaction = (id: number) => {
@@ -32,7 +33,7 @@ export const GlobalContextProvider = (children: App) => {
                 delTransaction,
                 addTransaction
             }}>
-            {children}
+            {props.children}
         </AppContext.Provider>
     )
 }

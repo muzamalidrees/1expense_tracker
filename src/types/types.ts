@@ -14,10 +14,13 @@ export type action = {
     payload: transaction
 }
 
+export type addTr = (transaction: transaction) => void
+export type delTr = (id: number) => void
+
 export type globalState = {
     transactions: transaction[]
-    delTransaction: (id: number) => void
-    addTransaction: (transaction: transaction) => void
+    delTransaction: delTr
+    addTransaction: addTr
 }
 
 export type App = {

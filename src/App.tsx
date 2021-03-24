@@ -8,7 +8,7 @@ import { GlobalContextProvider } from './contexts/GlobalState'
 
 function App() {
   return (
-    <GlobalContextProvider  >
+    <GlobalContextProvider >
       <Header />
       <div className='container'>
         <Balance />
@@ -16,7 +16,7 @@ function App() {
         <TransactionHistory />
         <NewTransaction />
       </div>
-    </GlobalContextProvider >
+    </GlobalContextProvider>
   );
 }
 

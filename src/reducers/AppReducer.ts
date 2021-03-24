@@ -1,5 +1,6 @@
-const AppReducer = (state, action) => {
+import { transaction, action } from '../types/types'
 
+const AppReducer = (state: { transactions: transaction[] }, action: action) => {
     switch (action.type) {
         case 'DELETE_TRANSACTION':
             return {
